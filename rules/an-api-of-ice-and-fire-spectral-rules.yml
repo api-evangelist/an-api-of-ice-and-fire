@@ -1,0 +1,461 @@
+# Spectral ruleset for An API of Ice And Fire (anapioficeandfire.com)
+#
+# Enforces the conventions observed in the AnApiOfIceAndFire REST API:
+#  - kebab-case path segments under a single base URL
+#  - camelCase JSON property and query-parameter naming
+#  - camelCase operationId with verb prefixes (get / list)
+#  - Title Case tags, summaries prefixed with the provider name
+#  - hypermedia URLs on every resource (`url` self-link, related-resource URL arrays)
+#  - RFC 5988 Link-header pagination on collection endpoints (page / pageSize)
+#  - conditional caching headers (ETag / Last-Modified / Cache-Control)
+#  - no authentication (read-only public API)
+#
+# Apply with:  spectral lint -r rules/an-api-of-ice-and-fire-spectral-rules.yml openapi/*.yml
+
+formats:
+  - oas3
+extends: []
+
+aliases:
+  Operation: "$.paths[*][get,post,put,patch,delete]"
+  Path: "$.paths[*]"
+  Schema: "$.components.schemas[*]"
+  SchemaProperty: "$.components.schemas[*].properties[*]"
+  Parameter: "$.components.parameters[*]"
+  PathParameter: "$.paths[*][get,post,put,patch,delete].parameters[?(@.in=='path')]"
+  QueryParameter: "$.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]"
+
+rules:
+
+  # ── INFO / METADATA ───────────────────────────────────────────────────────
+  info-title-format:
+    description: info.title MUST equal "An API of Ice And Fire".
+    message: '{{property}} should be "An API of Ice And Fire"'
+    severity: error
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: "^An API of Ice And Fire$"
+
+  info-description-required:
+    description: info.description MUST be present and at least 80 characters.
+    severity: error
+    given: $.info
+    then:
+      - field: description
+        function: truthy
+      - field: description
+        function: length
+        functionOptions:
+          min: 80
+
+  info-version-required:
+    description: info.version MUST be present.
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  info-contact-required:
+    description: info.contact with name and url MUST be present.
+    severity: warn
+    given: $.info
+    then:
+      - field: contact.name
+        function: truthy
+      - field: contact.url
+        function: truthy
+
+  info-license-required:
+    description: info.license MUST be present (BSD-style).
+    severity: warn
+    given: $.info
+    then:
+      - field: license.name
+        function: truthy
+      - field: license.url
+        function: truthy
+
+  # ── OPENAPI VERSION ──────────────────────────────────────────────────────
+  openapi-version-three:
+    description: OpenAPI version MUST be 3.x.
+    severity: error
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  # ── SERVERS ──────────────────────────────────────────────────────────────
+  servers-defined:
+    description: At least one server MUST be defined.
+    severity: error
+    given: $.servers
+    then:
+      function: length
+      functionOptions:
+        min: 1
+
+  servers-https-only:
+    description: Server URLs MUST use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  servers-anapioficeandfire-host:
+    description: Production server MUST point at anapioficeandfire.com.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "anapioficeandfire\\.com/api"
+
+  servers-description-required:
+    description: Every server MUST have a description.
+    severity: warn
+    given: $.servers[*]
+    then:
+      field: description
+      function: truthy
+
+  # ── PATHS — NAMING CONVENTIONS ───────────────────────────────────────────
+  paths-kebab-case:
+    description: Path segments MUST be lowercase kebab-case (plural collection nouns).
+    severity: warn
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/|(/[a-z][a-z0-9-]*(/\\{[a-zA-Z][a-zA-Z0-9]*\\})?)+)$"
+
+  paths-no-trailing-slash:
+    description: Paths MUST NOT end with a trailing slash (except root `/`).
+    severity: warn
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: ".+/$"
+
+  paths-no-query-strings:
+    description: Paths MUST NOT include query strings.
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "\\?"
+
+  paths-plural-collection-nouns:
+    description: Top-level resources use plural nouns (books, characters, houses).
+    severity: info
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/|/(books|characters|houses)(/.*)?)$"
+
+  # ── OPERATIONS ───────────────────────────────────────────────────────────
+  operation-summary-required:
+    description: Every operation MUST have a summary.
+    severity: error
+    given: "#Operation"
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-provider-prefix:
+    description: Operation summaries MUST start with "An API of Ice And Fire".
+    severity: warn
+    given: "#Operation.summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^An API of Ice And Fire "
+
+  operation-description-required:
+    description: Every operation MUST have a description.
+    severity: error
+    given: "#Operation"
+    then:
+      field: description
+      function: truthy
+
+  operation-id-required:
+    description: Every operation MUST have an operationId.
+    severity: error
+    given: "#Operation"
+    then:
+      field: operationId
+      function: truthy
+
+  operation-id-camel-case:
+    description: operationId MUST be camelCase.
+    severity: error
+    given: "#Operation.operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  operation-id-verb-prefix:
+    description: operationId SHOULD start with get, list, create, update, or delete.
+    severity: warn
+    given: "#Operation.operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(get|list|create|update|delete)[A-Z]"
+
+  operation-tags-required:
+    description: Every operation MUST have at least one tag.
+    severity: error
+    given: "#Operation"
+    then:
+      field: tags
+      function: length
+      functionOptions:
+        min: 1
+
+  operation-microcks-extension:
+    description: Operations SHOULD declare x-microcks-operation for mock-server compatibility.
+    severity: info
+    given: "#Operation"
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  # ── TAGS ─────────────────────────────────────────────────────────────────
+  tags-global-defined:
+    description: Global `tags` array MUST be defined.
+    severity: warn
+    given: $
+    then:
+      field: tags
+      function: truthy
+
+  tags-have-description:
+    description: Every global tag MUST have a description.
+    severity: warn
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
+
+  tags-title-case:
+    description: Tag names MUST be Title Case single words (Books, Characters, Houses, Root).
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z]+$"
+
+  # ── PARAMETERS ───────────────────────────────────────────────────────────
+  parameter-description-required:
+    description: Every parameter MUST have a description.
+    severity: warn
+    given: "$..parameters[?(@.name)]"
+    then:
+      field: description
+      function: truthy
+
+  parameter-camel-case:
+    description: Query and path parameter names MUST be camelCase.
+    severity: warn
+    given: "$..parameters[?(@.name)].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  parameter-pagination-naming:
+    description: Pagination MUST use `page` + `pageSize` (not page/limit, page/size, or offset/limit).
+    severity: warn
+    given: "$..parameters[?(@.in=='query')].name"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "^(limit|size|offset|per_page|perPage)$"
+
+  parameter-page-default:
+    description: The `page` parameter SHOULD default to 1.
+    severity: info
+    given: "$.components.parameters.Page.schema"
+    then:
+      field: default
+      function: truthy
+
+  parameter-page-size-max-fifty:
+    description: The `pageSize` parameter MUST cap at 50.
+    severity: warn
+    given: "$.components.parameters.PageSize.schema"
+    then:
+      field: maximum
+      function: truthy
+
+  # ── RESPONSES ────────────────────────────────────────────────────────────
+  response-success-required:
+    description: Every operation MUST declare a 200 response.
+    severity: error
+    given: "#Operation.responses"
+    then:
+      field: "200"
+      function: truthy
+
+  response-not-found-on-get-by-id:
+    description: get-by-id operations MUST declare a 404 response.
+    severity: warn
+    given: "$.paths[*][get].responses"
+    then:
+      field: "404"
+      function: defined
+
+  response-rate-limited:
+    description: Every operation SHOULD document the 403 rate-limit response.
+    severity: info
+    given: "#Operation.responses"
+    then:
+      field: "403"
+      function: defined
+
+  response-conditional-not-modified:
+    description: GET operations SHOULD document the 304 Not Modified response for conditional caching.
+    severity: info
+    given: "$.paths[*][get].responses"
+    then:
+      field: "304"
+      function: defined
+
+  response-json-content-type:
+    description: 200 responses MUST use application/json.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].responses['200'].content"
+    then:
+      field: application/json
+      function: truthy
+
+  response-description-required:
+    description: Every response MUST have a description.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses[*]"
+    then:
+      field: description
+      function: truthy
+
+  response-pagination-link-header:
+    description: Collection list responses SHOULD include the RFC 5988 Link header.
+    severity: warn
+    given: "$.paths[/books,/characters,/houses][get].responses['200'].headers"
+    then:
+      field: Link
+      function: truthy
+
+  response-caching-headers:
+    description: GET responses SHOULD include ETag, Last-Modified, and Cache-Control headers.
+    severity: info
+    given: "$.paths[*][get].responses['200'].headers"
+    then:
+      - field: ETag
+        function: defined
+      - field: Last-Modified
+        function: defined
+      - field: Cache-Control
+        function: defined
+
+  # ── SCHEMAS — PROPERTY NAMING ────────────────────────────────────────────
+  schema-property-camel-case:
+    description: Schema property names MUST be camelCase.
+    severity: warn
+    given: "$.components.schemas[*].properties.*~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  schema-type-required:
+    description: Every component schema MUST declare a `type`.
+    severity: error
+    given: "#Schema"
+    then:
+      field: type
+      function: truthy
+
+  schema-description-required:
+    description: Every component schema MUST have a description.
+    severity: warn
+    given: "#Schema"
+    then:
+      field: description
+      function: truthy
+
+  schema-url-self-link:
+    description: Resource schemas SHOULD include a `url` self-link.
+    severity: info
+    given: "$.components.schemas[?(@.type=='object')]"
+    then:
+      field: properties.url
+      function: defined
+
+  schema-related-resource-uri-format:
+    description: Schema properties named like related-resource refs MUST use format=uri.
+    severity: warn
+    given: "$.components.schemas[*].properties[url,father,mother,spouse,overlord,founder,currentLord,heir]"
+    then:
+      field: format
+      function: pattern
+      functionOptions:
+        match: "^uri$"
+
+  # ── SECURITY ─────────────────────────────────────────────────────────────
+  security-not-required:
+    description: This API is unauthenticated; global `security` MUST NOT require credentials.
+    severity: info
+    given: $
+    then:
+      field: security
+      function: falsy
+
+  # ── HTTP METHOD CONVENTIONS ──────────────────────────────────────────────
+  http-only-get:
+    description: An API of Ice And Fire is read-only — only GET operations are allowed.
+    severity: warn
+    given: "$.paths[*]"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "(post|put|patch|delete)"
+
+  get-no-request-body:
+    description: GET operations MUST NOT have a requestBody.
+    severity: error
+    given: "$.paths[*][get]"
+    then:
+      field: requestBody
+      function: falsy
+
+  # ── GENERAL QUALITY ──────────────────────────────────────────────────────
+  no-empty-descriptions:
+    description: Descriptions MUST NOT be empty strings.
+    severity: warn
+    given: "$..description"
+    then:
+      function: truthy
+
+  examples-encouraged:
+    description: Operations SHOULD include named examples on 200 responses.
+    severity: info
+    given: "$.paths[*][get].responses['200'].content.application/json"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: [example]
+            - required: [examples]

@@ -1,224 +1,199 @@
 aid: an-api-of-ice-and-fire
 name: An API of Ice And Fire
 description: >-
-  An API of Ice And Fire is the world's greatest source for quantified and
-  structured data from the universe of A Song of Ice and Fire (and the HBO
-  series Game of Thrones). The open, read-only REST API exposes Books,
-  Characters, and Houses as hypermedia resources with HAL-style URL references,
-  RFC 5988 Link-header pagination, conditional caching, and version selection
-  via custom media types. It is free, unauthenticated, and rate-limited at
-  20,000 requests per IP per day.
+  An API of Ice And Fire is the world's greatest source for quantified and structured data from the universe of A Song
+  of Ice and Fire (and the HBO series Game of Thrones). The open, read-only REST API exposes Books, Characters, and
+  Houses as hypermedia resources with HAL-style URL references, RFC 5988 Link-header pagination, conditional caching,
+  and version selection via custom media types. It is free, unauthenticated, and rate-limited at 20,000 requests per IP
+  per day.
 url: https://anapioficeandfire.com/
 specificationVersion: '0.20'
 created: '2026-05-28'
 modified: '2026-05-30'
 x-source: public-apis/public-apis
-x-category: "Video"
+x-category: Video
 x-type: opensource
 x-tier: 3
 x-tier-reason: bulk-registered-from-public-apis
 tags:
-  - Video
-  - Public APIs
-  - Open Source
-  - Game of Thrones
-  - A Song of Ice and Fire
-  - Fan API
-  - Hypermedia
-  - HAL
-  - REST
-  - Open Data
-  - Entertainment
+- Video
+- Public APIs
+- Open Source
+- Game of Thrones
+- A Song of Ice and Fire
+- Fan API
+- Hypermedia
+- HAL
+- REST
+- Open Data
+- Entertainment
 apis:
-  - name: An API of Ice And Fire
-    description: >-
-      Read-only REST API exposing Books, Characters, and Houses from the
-      A Song of Ice and Fire universe. All resources are hypermedia objects
-      with cross-resource URL references. Supports filtering, RFC 5988
-      Link-header pagination, ETag/Last-Modified caching, and version
-      selection via the Accept header.
-    humanURL: https://anapioficeandfire.com/
-    baseURL: https://anapioficeandfire.com/api
-    tags:
-      - Books
-      - Characters
-      - Houses
-      - Hypermedia
-      - REST
-    properties:
-      - type: Documentation
-        url: https://anapioficeandfire.com/Documentation
-      - type: Documentation
-        title: Wiki Reference
-        url: https://github.com/joakimskoog/AnApiOfIceAndFire/wiki
-      - type: SourceCode
-        url: https://github.com/joakimskoog/AnApiOfIceAndFire
-      - type: SignupURL
-        url: https://anapioficeandfire.com/
-      - type: OpenAPI
-        url: openapi/an-api-of-ice-and-fire-openapi.yml
-      - type: SDK
-        title: Python SDK (joakimskoog/anapioficeandfire-python)
-        url: https://github.com/joakimskoog/anapioficeandfire-python
-      - type: SDK
-        title: Elixir Library (sotojuan/maester)
-        url: https://github.com/sotojuan/maester
-      - type: SDK
-        title: GraphQL Wrapper (afram/iceandfire-graphql)
-        url: https://github.com/afram/iceandfire-graphql
-      - type: SDK
-        title: Haskell Library (kberger/anapioficeandfire-haskell)
-        url: https://github.com/kberger/anapioficeandfire-haskell
-      - type: SDK
-        title: Node.js Library (arbazsiddiqui/A-song-of-ice-and-fire-API)
-        url: https://github.com/arbazsiddiqui/A-song-of-ice-and-fire-API
-      - type: SDK
-        title: Node.js Library (alexwebb2/node-api-iceandfire)
-        url: https://github.com/alexwebb2/node-api-iceandfire
-      - type: SDK
-        title: R Library (MangoTheCat/GoTr)
-        url: https://github.com/MangoTheCat/GoTr
-      - type: SDK
-        title: Ruby Library (jzntam/game_of_thrones_api)
-        url: https://github.com/jzntam/game_of_thrones_api
-      - type: SDK
-        title: Rust Library (Yag000/asoiaf-rs)
-        url: https://github.com/Yag000/asoiaf-rs
-      - type: SDK
-        title: Swift Library (murphb52/IceAndFireKit)
-        url: https://github.com/murphb52/IceAndFireKit
-      - type: SDK
-        title: Swift Library (ujell/IceAndFireLoader)
-        url: https://github.com/ujell/IceAndFireLoader
-      - type: SDK
-        title: Swift Library (fitomad/WesterosKit)
-        url: https://github.com/fitomad/WesterosKit
-      - type: SDK
-        title: Go Library (anujpradhaan/anapioficeandfire-go)
-        url: https://github.com/anujpradhaan/anapioficeandfire-go
-      - type: SDK
-        title: C++ Wrapper (zytron3/AnAPIofIceAndFireCpp)
-        url: https://github.com/zytron3/AnAPIofIceAndFireCpp
-      - type: SDK
-        title: Voxgig TypeScript SDK
-        url: https://github.com/voxgig-sdk/anapioficeandfire-sdk
-      - type: Tools
-        title: MCP Server (pipeworx-io/mcp-anapioficeandfire)
-        url: https://github.com/pipeworx-io/mcp-anapioficeandfire
-      - type: Tools
-        title: Tableau Web Data Connector
-        url: https://github.com/stephdietzel/ConnectorOfIceAndFire
-      - type: NaftikoCapability
-        url: capabilities/an-api-of-ice-and-fire-books.yaml
-      - type: NaftikoCapability
-        url: capabilities/an-api-of-ice-and-fire-characters.yaml
-      - type: NaftikoCapability
-        url: capabilities/an-api-of-ice-and-fire-houses.yaml
-common:
-  - type: Website
-    url: https://anapioficeandfire.com/
+- name: An API of Ice And Fire
+  description: >-
+    Read-only REST API exposing Books, Characters, and Houses from the A Song of Ice and Fire universe. All resources
+    are hypermedia objects with cross-resource URL references. Supports filtering, RFC 5988 Link-header pagination,
+    ETag/Last-Modified caching, and version selection via the Accept header.
+  humanURL: https://anapioficeandfire.com/
+  baseURL: https://anapioficeandfire.com/api
+  tags:
+  - Books
+  - Characters
+  - Houses
+  - Hypermedia
+  - REST
+  properties:
   - type: Documentation
     url: https://anapioficeandfire.com/Documentation
   - type: Documentation
-    title: Project Wiki
+    title: Wiki Reference
     url: https://github.com/joakimskoog/AnApiOfIceAndFire/wiki
   - type: SourceCode
     url: https://github.com/joakimskoog/AnApiOfIceAndFire
-  - type: License
-    title: BSD 3-Clause-like (see LICENSE.md)
-    url: https://github.com/joakimskoog/AnApiOfIceAndFire/blob/master/LICENSE.md
-  - type: ContributingGuide
-    url: https://github.com/joakimskoog/AnApiOfIceAndFire/blob/master/CONTRIBUTING.md
-  - type: GitHubRepository
-    url: https://github.com/joakimskoog/AnApiOfIceAndFire
-  - type: GitHubOrganization
-    title: Maintainer
-    url: https://github.com/joakimskoog
-  - type: PublicAPIsListing
-    url: https://github.com/public-apis/public-apis
-  - type: SpectralRules
-    url: rules/an-api-of-ice-and-fire-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/an-api-of-ice-and-fire-vocabulary.yml
+  - type: SignupURL
+    url: https://anapioficeandfire.com/
+  - type: OpenAPI
+    url: openapi/an-api-of-ice-and-fire-openapi.yml
+  - type: SDK
+    title: Python SDK (joakimskoog/anapioficeandfire-python)
+    url: https://github.com/joakimskoog/anapioficeandfire-python
+  - type: SDK
+    title: Elixir Library (sotojuan/maester)
+    url: https://github.com/sotojuan/maester
+  - type: SDK
+    title: GraphQL Wrapper (afram/iceandfire-graphql)
+    url: https://github.com/afram/iceandfire-graphql
+  - type: SDK
+    title: Haskell Library (kberger/anapioficeandfire-haskell)
+    url: https://github.com/kberger/anapioficeandfire-haskell
+  - type: SDK
+    title: Node.js Library (arbazsiddiqui/A-song-of-ice-and-fire-API)
+    url: https://github.com/arbazsiddiqui/A-song-of-ice-and-fire-API
+  - type: SDK
+    title: Node.js Library (alexwebb2/node-api-iceandfire)
+    url: https://github.com/alexwebb2/node-api-iceandfire
+  - type: SDK
+    title: R Library (MangoTheCat/GoTr)
+    url: https://github.com/MangoTheCat/GoTr
+  - type: SDK
+    title: Ruby Library (jzntam/game_of_thrones_api)
+    url: https://github.com/jzntam/game_of_thrones_api
+  - type: SDK
+    title: Rust Library (Yag000/asoiaf-rs)
+    url: https://github.com/Yag000/asoiaf-rs
+  - type: SDK
+    title: Swift Library (murphb52/IceAndFireKit)
+    url: https://github.com/murphb52/IceAndFireKit
+  - type: SDK
+    title: Swift Library (ujell/IceAndFireLoader)
+    url: https://github.com/ujell/IceAndFireLoader
+  - type: SDK
+    title: Swift Library (fitomad/WesterosKit)
+    url: https://github.com/fitomad/WesterosKit
+  - type: SDK
+    title: Go Library (anujpradhaan/anapioficeandfire-go)
+    url: https://github.com/anujpradhaan/anapioficeandfire-go
+  - type: SDK
+    title: C++ Wrapper (zytron3/AnAPIofIceAndFireCpp)
+    url: https://github.com/zytron3/AnAPIofIceAndFireCpp
+  - type: SDK
+    title: Voxgig TypeScript SDK
+    url: https://github.com/voxgig-sdk/anapioficeandfire-sdk
+  - type: Tools
+    title: MCP Server (pipeworx-io/mcp-anapioficeandfire)
+    url: https://github.com/pipeworx-io/mcp-anapioficeandfire
+  - type: Tools
+    title: Tableau Web Data Connector
+    url: https://github.com/stephdietzel/ConnectorOfIceAndFire
+  - url: graphql/an-api-of-ice-and-fire-graphql.md
+    type: GraphQL
+common:
+- type: Website
+  url: https://anapioficeandfire.com/
+- type: Documentation
+  url: https://anapioficeandfire.com/Documentation
+- type: Documentation
+  title: Project Wiki
+  url: https://github.com/joakimskoog/AnApiOfIceAndFire/wiki
+- type: SourceCode
+  url: https://github.com/joakimskoog/AnApiOfIceAndFire
+- type: License
+  title: BSD 3-Clause-like (see LICENSE.md)
+  url: https://github.com/joakimskoog/AnApiOfIceAndFire/blob/master/LICENSE.md
+- type: ContributingGuide
+  url: https://github.com/joakimskoog/AnApiOfIceAndFire/blob/master/CONTRIBUTING.md
+- type: GitHubRepository
+  url: https://github.com/joakimskoog/AnApiOfIceAndFire
+- type: GitHubOrganization
+  title: Maintainer
+  url: https://github.com/joakimskoog
+- type: PublicAPIsListing
+  url: https://github.com/public-apis/public-apis
+- type: SpectralRules
+  url: rules/an-api-of-ice-and-fire-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/an-api-of-ice-and-fire-vocabulary.yml
 features:
-  - name: Hypermedia Resources
-    description: >-
-      Every resource is returned with absolute `url` self-links and outbound
-      URL references to related resources (e.g. characters point to allegiance
-      houses, books, and POV books).
-  - name: RFC 5988 Link-Header Pagination
-    description: >-
-      Collection endpoints paginate via Link headers with `first`, `next`,
-      `prev`, and `last` rels — no in-body pagination envelope, just
-      ready-to-follow URLs.
-  - name: Conditional Caching
-    description: >-
-      Responses include ETag and Last-Modified headers. Clients can issue
-      conditional GETs with `If-None-Match` / `If-Modified-Since` and receive
-      304 Not Modified to save bandwidth.
-  - name: Media-Type Versioning
-    description: >-
-      Versions are selected via the Accept header, e.g.
-      `application/vnd.anapioficeandfire+json; version=1` — resources can
-      evolve independently without breaking older clients.
-  - name: Rich Filtering
-    description: >-
-      Characters can be filtered by name, gender, culture, born, died, and
-      isAlive; Houses by region, words, hasWords, hasTitles, hasSeats,
-      hasDiedOut, hasAncestralWeapons; Books by name, fromReleaseDate,
-      toReleaseDate.
-  - name: No Authentication
-    description: >-
-      Fully open read-only API — no API key, no OAuth, no signup. GET only.
-  - name: Generous Rate Limit
-    description: >-
-      20,000 requests per IP per 24 hours, more than enough for most
-      hobbyist and demo workloads. 403 Forbidden after exhaustion until the
-      window resets.
+- name: Hypermedia Resources
+  description: >-
+    Every resource is returned with absolute `url` self-links and outbound URL references to related resources (e.g.
+    characters point to allegiance houses, books, and POV books).
+- name: RFC 5988 Link-Header Pagination
+  description: >-
+    Collection endpoints paginate via Link headers with `first`, `next`, `prev`, and `last` rels — no in-body
+    pagination envelope, just ready-to-follow URLs.
+- name: Conditional Caching
+  description: >-
+    Responses include ETag and Last-Modified headers. Clients can issue conditional GETs with `If-None-Match` /
+    `If-Modified-Since` and receive 304 Not Modified to save bandwidth.
+- name: Media-Type Versioning
+  description: >-
+    Versions are selected via the Accept header, e.g. `application/vnd.anapioficeandfire+json; version=1` — resources
+    can evolve independently without breaking older clients.
+- name: Rich Filtering
+  description: >-
+    Characters can be filtered by name, gender, culture, born, died, and isAlive; Houses by region, words, hasWords,
+    hasTitles, hasSeats, hasDiedOut, hasAncestralWeapons; Books by name, fromReleaseDate, toReleaseDate.
+- name: No Authentication
+  description: Fully open read-only API — no API key, no OAuth, no signup. GET only.
+- name: Generous Rate Limit
+  description: >-
+    20,000 requests per IP per 24 hours, more than enough for most hobbyist and demo workloads. 403 Forbidden after
+    exhaustion until the window resets.
 useCases:
-  - name: Learning REST and Hypermedia
-    description: >-
-      Used in countless tutorials, bootcamps, and university courses to teach
-      REST clients, HAL-style hypermedia traversal, Link-header pagination,
-      and conditional caching against a real, free, fun dataset.
-  - name: Fan Apps and Visualizations
-    description: >-
-      Powers fan-built web and mobile apps that browse the ASOIAF universe —
-      character profiles, house family trees, book timelines, and POV
-      explorers.
-  - name: API Client Library Examples
-    description: >-
-      The community has produced helper libraries in Python, Elixir, Haskell,
-      Node.js, R, Ruby, Rust, Swift, and a GraphQL wrapper, making the API
-      a popular target for "write your own SDK" exercises.
-  - name: Game of Thrones Bots and Chat Integrations
-    description: >-
-      Reddit and Discord bots use the API to answer canon questions about
-      characters, houses, and books in real time.
-  - name: Data Journalism and Analysis
-    description: >-
-      Notebooks and data-science demos slice the dataset to study character
-      mortality, house power dynamics, and POV distribution across the
-      novels.
+- name: Learning REST and Hypermedia
+  description: >-
+    Used in countless tutorials, bootcamps, and university courses to teach REST clients, HAL-style hypermedia
+    traversal, Link-header pagination, and conditional caching against a real, free, fun dataset.
+- name: Fan Apps and Visualizations
+  description: >-
+    Powers fan-built web and mobile apps that browse the ASOIAF universe — character profiles, house family trees,
+    book timelines, and POV explorers.
+- name: API Client Library Examples
+  description: >-
+    The community has produced helper libraries in Python, Elixir, Haskell, Node.js, R, Ruby, Rust, Swift, and a
+    GraphQL wrapper, making the API a popular target for "write your own SDK" exercises.
+- name: Game of Thrones Bots and Chat Integrations
+  description: Reddit and Discord bots use the API to answer canon questions about characters, houses, and books in real time.
+- name: Data Journalism and Analysis
+  description: >-
+    Notebooks and data-science demos slice the dataset to study character mortality, house power dynamics, and POV
+    distribution across the novels.
 integrations:
-  - name: A Song of Ice and Fire Wiki (canon source)
-    description: >-
-      The data behind the API is curated against the A Wiki of Ice and Fire
-      canon source, kept in sync as new material is published.
-  - name: Public APIs Catalog
-    description: >-
-      Listed in the `public-apis/public-apis` directory under the Video
-      category as a free, no-auth fan API.
+- name: A Song of Ice and Fire Wiki (canon source)
+  description: >-
+    The data behind the API is curated against the A Wiki of Ice and Fire canon source, kept in sync as new material
+    is published.
+- name: Public APIs Catalog
+  description: Listed in the `public-apis/public-apis` directory under the Video category as a free, no-auth fan API.
 solutions:
-  - name: Self-Hosting
-    description: >-
-      The full source (ASP.NET / C#) is available under a BSD-style license,
-      so teams can fork and self-host their own ASOIAF data API.
-  - name: Mirror / Backup
-    description: >-
-      Because the API is read-only and the dataset is bounded (~12 books,
-      ~2,100 characters, ~450 houses), a complete mirror fits in a small
-      JSON archive — ideal for offline use and CI test fixtures.
+- name: Self-Hosting
+  description: >-
+    The full source (ASP.NET / C#) is available under a BSD-style license, so teams can fork and self-host their own
+    ASOIAF data API.
+- name: Mirror / Backup
+  description: >-
+    Because the API is read-only and the dataset is bounded (~12 books, ~2,100 characters, ~450 houses), a complete
+    mirror fits in a small JSON archive — ideal for offline use and CI test fixtures.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

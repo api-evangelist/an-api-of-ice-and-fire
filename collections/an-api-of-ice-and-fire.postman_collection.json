@@ -1,0 +1,1949 @@
+{
+  "item": [
+    {
+      "id": "56f0d88f-4a6b-4350-b9e9-9367fb0c43a9",
+      "name": "Root",
+      "description": {
+        "content": "API entry-point listing the top-level resource URLs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b8191fa-110a-4475-a55e-310d3f8f32c5",
+          "name": "An API of Ice And Fire Get API Root",
+          "request": {
+            "name": "An API of Ice And Fire Get API Root",
+            "description": {
+              "content": "Returns the API entry point with absolute URLs to the three top-level collections (books, characters, houses). Useful for hypermedia discovery — clients can crawl the API from this endpoint alone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63f2984f-9eed-406d-bd98-78fa3728cedb",
+              "name": "API root document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"books\": \"https://anapioficeandfire.com/api/books\",\n  \"characters\": \"https://anapioficeandfire.com/api/characters\",\n  \"houses\": \"https://anapioficeandfire.com/api/houses\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1c33d8dd-2eb1-4ba2-804c-7e567466584b",
+      "name": "Books",
+      "description": {
+        "content": "Books in the A Song of Ice and Fire series.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bcc71bd9-96ad-437b-8581-6fbdc0f10923",
+          "name": "An API of Ice And Fire List Books",
+          "request": {
+            "name": "An API of Ice And Fire List Books",
+            "description": {
+              "content": "List all books in the A Song of Ice and Fire series. Supports filtering by name and release-date range, plus RFC 5988 Link-header pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "books"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-indexed). Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "Items per page (default 10, max 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter books by exact book name."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromReleaseDate",
+                  "value": "<date>",
+                  "description": "Only include books released on or after this date (ISO 8601)."
+                },
+                {
+                  "disabled": false,
+                  "key": "toReleaseDate",
+                  "value": "<date>",
+                  "description": "Only include books released on or before this date (ISO 8601)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e21cb68e-cea5-45f2-869a-af5457dbf75d",
+              "name": "A paginated list of books.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromReleaseDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toReleaseDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "RFC 5988 pagination links with `first`, `prev`, `next`, and `last` relations.",
+                  "key": "Link",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"url\": \"https://anapioficeandfire.com/api/books/1\",\n    \"name\": \"A Game of Thrones\",\n    \"isbn\": \"978-0553103540\",\n    \"authors\": [\n      \"George R. R. Martin\"\n    ],\n    \"numberOfPages\": 694,\n    \"publisher\": \"Bantam Books\",\n    \"country\": \"United States\",\n    \"mediaType\": \"Hardcover\",\n    \"released\": \"1996-08-01T00:00:00\",\n    \"characters\": [\n      \"https://anapioficeandfire.com/api/characters/2\",\n      \"https://anapioficeandfire.com/api/characters/12\",\n      \"https://anapioficeandfire.com/api/characters/13\"\n    ],\n    \"povCharacters\": [\n      \"https://anapioficeandfire.com/api/characters/148\",\n      \"https://anapioficeandfire.com/api/characters/208\",\n      \"https://anapioficeandfire.com/api/characters/232\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51148100-a914-476f-b7c4-94edf7c6ac89",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromReleaseDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toReleaseDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27466f27-2050-4311-be36-8a20c808d5ad",
+              "name": "Malformed request — invalid query parameter or value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromReleaseDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toReleaseDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dca2347e-909f-429a-8c92-f50ec098921d",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromReleaseDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toReleaseDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f899c14-ed8f-4fcb-84bf-57535d574f38",
+          "name": "An API of Ice And Fire Get Book by ID",
+          "request": {
+            "name": "An API of Ice And Fire Get Book by ID",
+            "description": {
+              "content": "Retrieve a single book by its numeric ID. Returns the full hypermedia book resource with absolute character and POV-character URLs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "books",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b9284cb-a3b0-44dc-9927-71231d56b814",
+              "name": "The requested book.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"https://anapioficeandfire.com/api/books/1\",\n  \"name\": \"A Game of Thrones\",\n  \"isbn\": \"978-0553103540\",\n  \"authors\": [\n    \"George R. R. Martin\"\n  ],\n  \"numberOfPages\": 694,\n  \"publisher\": \"Bantam Books\",\n  \"country\": \"United States\",\n  \"mediaType\": \"Hardcover\",\n  \"released\": \"1996-08-01T00:00:00\",\n  \"characters\": [\n    \"https://anapioficeandfire.com/api/characters/2\",\n    \"https://anapioficeandfire.com/api/characters/12\",\n    \"https://anapioficeandfire.com/api/characters/13\"\n  ],\n  \"povCharacters\": [\n    \"https://anapioficeandfire.com/api/characters/148\",\n    \"https://anapioficeandfire.com/api/characters/208\",\n    \"https://anapioficeandfire.com/api/characters/232\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95d0a498-5f4c-4260-b07f-b75ab7333cb5",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "59235b0d-f0db-45ea-84bf-688d6a9ea66f",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f44a9bb6-3239-436a-b894-6b5adacf254f",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d3f0947a-9c25-4eea-90b6-400576e7dec4",
+      "name": "Characters",
+      "description": {
+        "content": "Characters from the A Song of Ice and Fire universe.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c24d2c7-0cf4-4332-b4be-29a303c36539",
+          "name": "An API of Ice And Fire List Characters",
+          "request": {
+            "name": "An API of Ice And Fire List Characters",
+            "description": {
+              "content": "List characters from the A Song of Ice and Fire universe. Supports filtering by name, gender, culture, birth year, death year, and living status, plus RFC 5988 Link-header pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-indexed). Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "Items per page (default 10, max 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter characters by name."
+                },
+                {
+                  "disabled": false,
+                  "key": "gender",
+                  "value": "<string>",
+                  "description": "Filter characters by gender (e.g. Male, Female)."
+                },
+                {
+                  "disabled": false,
+                  "key": "culture",
+                  "value": "<string>",
+                  "description": "Filter characters by culture (e.g. Northmen, Dornish, Ironborn)."
+                },
+                {
+                  "disabled": false,
+                  "key": "born",
+                  "value": "<string>",
+                  "description": "Filter characters by birth year (free-text, e.g. \"In 283 AC\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "died",
+                  "value": "<string>",
+                  "description": "Filter characters by death year (free-text)."
+                },
+                {
+                  "disabled": false,
+                  "key": "isAlive",
+                  "value": "<boolean>",
+                  "description": "Filter to only living (true) or only dead (false) characters."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab65c420-3ece-4cdd-b9d8-98f0583d0aa4",
+              "name": "A paginated list of characters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "culture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "born",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "died",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isAlive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "RFC 5988 pagination links with `first`, `prev`, `next`, and `last` relations.",
+                  "key": "Link",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"url\": \"https://anapioficeandfire.com/api/characters/583\",\n    \"name\": \"Jon Snow\",\n    \"gender\": \"Male\",\n    \"culture\": \"Northmen\",\n    \"born\": \"In 283 AC\",\n    \"died\": \"\",\n    \"titles\": [\n      \"Lord Commander of the Night's Watch\"\n    ],\n    \"aliases\": [\n      \"Lord Snow\",\n      \"Ned Stark's Bastard\",\n      \"The Bastard of Winterfell\"\n    ],\n    \"allegiances\": [\n      \"https://anapioficeandfire.com/api/houses/362\"\n    ],\n    \"books\": [\n      \"https://anapioficeandfire.com/api/books/5\"\n    ],\n    \"povBooks\": [\n      \"https://anapioficeandfire.com/api/books/1\",\n      \"https://anapioficeandfire.com/api/books/2\",\n      \"https://anapioficeandfire.com/api/books/3\"\n    ],\n    \"tvSeries\": [\n      \"Season 1\",\n      \"Season 2\",\n      \"Season 3\",\n      \"Season 4\",\n      \"Season 5\",\n      \"Season 6\"\n    ],\n    \"playedBy\": [\n      \"Kit Harington\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "830a1bbc-ee30-400e-8eec-72da7727cd2f",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "culture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "born",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "died",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isAlive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f53566e1-a32c-471c-9ffa-e73ea77656db",
+              "name": "Malformed request — invalid query parameter or value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "culture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "born",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "died",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isAlive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92d2fb08-0468-4f82-8607-67c99599ef8a",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "culture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "born",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "died",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isAlive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "566c1323-da77-4955-aae6-505b4b43ef1b",
+          "name": "An API of Ice And Fire Get Character by ID",
+          "request": {
+            "name": "An API of Ice And Fire Get Character by ID",
+            "description": {
+              "content": "Retrieve a single character by its numeric ID. Returns the full hypermedia character resource with absolute allegiance, book, and POV-book URLs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f62b9f64-008e-44ec-9d47-344c4579aae0",
+              "name": "The requested character.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"https://anapioficeandfire.com/api/characters/583\",\n  \"name\": \"Jon Snow\",\n  \"gender\": \"Male\",\n  \"culture\": \"Northmen\",\n  \"born\": \"In 283 AC\",\n  \"died\": \"\",\n  \"titles\": [\n    \"Lord Commander of the Night's Watch\"\n  ],\n  \"aliases\": [\n    \"Lord Snow\",\n    \"Ned Stark's Bastard\",\n    \"The Bastard of Winterfell\"\n  ],\n  \"allegiances\": [\n    \"https://anapioficeandfire.com/api/houses/362\"\n  ],\n  \"books\": [\n    \"https://anapioficeandfire.com/api/books/5\"\n  ],\n  \"povBooks\": [\n    \"https://anapioficeandfire.com/api/books/1\",\n    \"https://anapioficeandfire.com/api/books/2\",\n    \"https://anapioficeandfire.com/api/books/3\"\n  ],\n  \"tvSeries\": [\n    \"Season 1\",\n    \"Season 2\",\n    \"Season 3\",\n    \"Season 4\",\n    \"Season 5\",\n    \"Season 6\"\n  ],\n  \"playedBy\": [\n    \"Kit Harington\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1aa67d26-9e31-44f6-a9c7-77f0375745ea",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b705e11e-297e-4bf1-8f34-aa4185923053",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fc013e3-8752-4ff0-ade0-35c7b6fda56f",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7c7bea8f-14d4-4a60-af24-c7fee0234522",
+      "name": "Houses",
+      "description": {
+        "content": "Noble houses of Westeros and Essos.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e23b4d99-44c9-45d0-b427-e750e1e8006d",
+          "name": "An API of Ice And Fire List Houses",
+          "request": {
+            "name": "An API of Ice And Fire List Houses",
+            "description": {
+              "content": "List noble houses of Westeros and Essos. Supports filtering by name, region, words/motto, and various boolean has-* filters, plus RFC 5988 Link-header pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "houses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-indexed). Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "Items per page (default 10, max 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter houses by exact house name."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "Filter houses by region (e.g. \"The North\", \"The Reach\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "words",
+                  "value": "<string>",
+                  "description": "Filter houses by house words (motto)."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasWords",
+                  "value": "<boolean>",
+                  "description": "Restrict to houses that have (true) or do not have (false) words."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasTitles",
+                  "value": "<boolean>",
+                  "description": "Restrict to houses that have (true) or do not have (false) titles."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasSeats",
+                  "value": "<boolean>",
+                  "description": "Restrict to houses that have (true) or do not have (false) seats."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasDiedOut",
+                  "value": "<boolean>",
+                  "description": "Restrict to extinct (true) or surviving (false) houses."
+                },
+                {
+                  "disabled": false,
+                  "key": "hasAncestralWeapons",
+                  "value": "<boolean>",
+                  "description": "Restrict to houses that have (true) or do not have (false) ancestral weapons."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cdde74e0-4bca-461f-85d3-e5e1c8a8e8e9",
+              "name": "A paginated list of houses.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "houses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "words",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasWords",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasTitles",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasSeats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasDiedOut",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasAncestralWeapons",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "RFC 5988 pagination links with `first`, `prev`, `next`, and `last` relations.",
+                  "key": "Link",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"url\": \"https://anapioficeandfire.com/api/houses/362\",\n    \"name\": \"House Stark of Winterfell\",\n    \"region\": \"The North\",\n    \"coatOfArms\": \"A running grey direwolf, on an ice-white field\",\n    \"words\": \"Winter is Coming\",\n    \"titles\": [\n      \"King in the North\",\n      \"Lord of Winterfell\",\n      \"Warden of the North\"\n    ],\n    \"seats\": [\n      \"Winterfell\"\n    ],\n    \"overlord\": \"https://anapioficeandfire.com/api/houses/16\",\n    \"founded\": \"Age of Heroes\",\n    \"founder\": \"https://anapioficeandfire.com/api/characters/209\",\n    \"diedOut\": \"\",\n    \"ancestralWeapons\": [\n      \"Ice\"\n    ],\n    \"cadetBranches\": [\n      \"https://anapioficeandfire.com/api/houses/170\",\n      \"https://anapioficeandfire.com/api/houses/215\"\n    ],\n    \"swornMembers\": [\n      \"https://anapioficeandfire.com/api/characters/2\",\n      \"https://anapioficeandfire.com/api/characters/148\",\n      \"https://anapioficeandfire.com/api/characters/208\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cfdac42-2846-4eb7-9b5e-a421e874cde0",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "houses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "words",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasWords",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasTitles",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasSeats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasDiedOut",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasAncestralWeapons",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afb136f6-b19b-454d-a3c1-8b430a4e0934",
+              "name": "Malformed request — invalid query parameter or value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "houses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "words",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasWords",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasTitles",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasSeats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasDiedOut",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasAncestralWeapons",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe8d676f-0077-4410-ad9f-47b54faaf8e0",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "houses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "words",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasWords",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasTitles",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasSeats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasDiedOut",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hasAncestralWeapons",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7dbe58c-38c3-4cd3-b4b6-78ad40987333",
+          "name": "An API of Ice And Fire Get House by ID",
+          "request": {
+            "name": "An API of Ice And Fire Get House by ID",
+            "description": {
+              "content": "Retrieve a single house by its numeric ID. Returns the full hypermedia house resource with absolute current-lord, heir, overlord, founder, cadet-branch, and sworn-member URLs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "houses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "082959f4-b0c3-446e-a993-32332d3a1e64",
+              "name": "The requested house.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "houses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"https://anapioficeandfire.com/api/houses/362\",\n  \"name\": \"House Stark of Winterfell\",\n  \"region\": \"The North\",\n  \"coatOfArms\": \"A running grey direwolf, on an ice-white field\",\n  \"words\": \"Winter is Coming\",\n  \"titles\": [\n    \"King in the North\",\n    \"Lord of Winterfell\",\n    \"Warden of the North\"\n  ],\n  \"seats\": [\n    \"Winterfell\"\n  ],\n  \"overlord\": \"https://anapioficeandfire.com/api/houses/16\",\n  \"founded\": \"Age of Heroes\",\n  \"founder\": \"https://anapioficeandfire.com/api/characters/209\",\n  \"diedOut\": \"\",\n  \"ancestralWeapons\": [\n    \"Ice\"\n  ],\n  \"cadetBranches\": [\n    \"https://anapioficeandfire.com/api/houses/170\",\n    \"https://anapioficeandfire.com/api/houses/215\"\n  ],\n  \"swornMembers\": [\n    \"https://anapioficeandfire.com/api/characters/2\",\n    \"https://anapioficeandfire.com/api/characters/148\",\n    \"https://anapioficeandfire.com/api/characters/208\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc82b4c4-3c07-4381-a06f-240ebe238cb4",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "houses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a63ff751-b2e6-4042-9bab-ba192ca270bd",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "houses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c1786fc-176a-4ccd-9ea0-4d5cce4586b3",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "houses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://anapioficeandfire.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c96f5a7c-b4a2-420f-a80d-557a924f4c97",
+    "name": "An API of Ice And Fire",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API of Ice And Fire is the world's greatest source for quantified and structured data from the universe of A Song of Ice and Fire (and the HBO series Game of Thrones). Three hypermedia resources — Books, Characters, and Houses — are exposed read-only over HTTPS, free of authentication, with RFC 5988 Link-header pagination, conditional caching (ETag / Last-Modified), and version selection via custom media types.\n\nContact Support:\n Name: Joakim Skoog (maintainer)",
+      "type": "text/plain"
+    }
+  }
+}

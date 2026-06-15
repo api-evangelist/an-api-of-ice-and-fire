@@ -1,0 +1,287 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "An API of Ice And Fire",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Root",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "An API of Ice And Fire Get API Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/"
+          },
+          "docs": "Returns the API entry point with absolute URLs to the three top-level collections (books, characters, houses). Useful for hypermedia discovery — clients can crawl the API from this endpoint alone."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Books",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "An API of Ice And Fire List Books",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/books",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number (1-indexed). Defaults to 1."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Items per page (default 10, max 50)."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter books by exact book name."
+              },
+              {
+                "name": "fromReleaseDate",
+                "value": "",
+                "type": "query",
+                "description": "Only include books released on or after this date (ISO 8601)."
+              },
+              {
+                "name": "toReleaseDate",
+                "value": "",
+                "type": "query",
+                "description": "Only include books released on or before this date (ISO 8601)."
+              }
+            ]
+          },
+          "docs": "List all books in the A Song of Ice and Fire series. Supports filtering by name and release-date range, plus RFC 5988 Link-header pagination."
+        },
+        {
+          "info": {
+            "name": "An API of Ice And Fire Get Book by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/books/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "Numeric resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a single book by its numeric ID. Returns the full hypermedia book resource with absolute character and POV-character URLs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Characters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "An API of Ice And Fire List Characters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/characters",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number (1-indexed). Defaults to 1."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Items per page (default 10, max 50)."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by name."
+              },
+              {
+                "name": "gender",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by gender (e.g. Male, Female)."
+              },
+              {
+                "name": "culture",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by culture (e.g. Northmen, Dornish, Ironborn)."
+              },
+              {
+                "name": "born",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by birth year (free-text, e.g. \"In 283 AC\")."
+              },
+              {
+                "name": "died",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by death year (free-text)."
+              },
+              {
+                "name": "isAlive",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only living (true) or only dead (false) characters."
+              }
+            ]
+          },
+          "docs": "List characters from the A Song of Ice and Fire universe. Supports filtering by name, gender, culture, birth year, death year, and living status, plus RFC 5988 Link-header pagination."
+        },
+        {
+          "info": {
+            "name": "An API of Ice And Fire Get Character by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/characters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "Numeric resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a single character by its numeric ID. Returns the full hypermedia character resource with absolute allegiance, book, and POV-book URLs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Houses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "An API of Ice And Fire List Houses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/houses",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number (1-indexed). Defaults to 1."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Items per page (default 10, max 50)."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter houses by exact house name."
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Filter houses by region (e.g. \"The North\", \"The Reach\")."
+              },
+              {
+                "name": "words",
+                "value": "",
+                "type": "query",
+                "description": "Filter houses by house words (motto)."
+              },
+              {
+                "name": "hasWords",
+                "value": "",
+                "type": "query",
+                "description": "Restrict to houses that have (true) or do not have (false) words."
+              },
+              {
+                "name": "hasTitles",
+                "value": "",
+                "type": "query",
+                "description": "Restrict to houses that have (true) or do not have (false) titles."
+              },
+              {
+                "name": "hasSeats",
+                "value": "",
+                "type": "query",
+                "description": "Restrict to houses that have (true) or do not have (false) seats."
+              },
+              {
+                "name": "hasDiedOut",
+                "value": "",
+                "type": "query",
+                "description": "Restrict to extinct (true) or surviving (false) houses."
+              },
+              {
+                "name": "hasAncestralWeapons",
+                "value": "",
+                "type": "query",
+                "description": "Restrict to houses that have (true) or do not have (false) ancestral weapons."
+              }
+            ]
+          },
+          "docs": "List noble houses of Westeros and Essos. Supports filtering by name, region, words/motto, and various boolean has-* filters, plus RFC 5988 Link-header pagination."
+        },
+        {
+          "info": {
+            "name": "An API of Ice And Fire Get House by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/houses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "Numeric resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a single house by its numeric ID. Returns the full hypermedia house resource with absolute current-lord, heir, overlord, founder, cadet-branch, and sworn-member URLs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

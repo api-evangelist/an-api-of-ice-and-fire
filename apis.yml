@@ -53,49 +53,49 @@ apis:
     url: https://anapioficeandfire.com/
   - type: OpenAPI
     url: openapi/an-api-of-ice-and-fire-openapi.yml
-  - type: SDK
+  - type: SDKs
     title: Python SDK (joakimskoog/anapioficeandfire-python)
     url: https://github.com/joakimskoog/anapioficeandfire-python
-  - type: SDK
+  - type: SDKs
     title: Elixir Library (sotojuan/maester)
     url: https://github.com/sotojuan/maester
-  - type: SDK
+  - type: SDKs
     title: GraphQL Wrapper (afram/iceandfire-graphql)
     url: https://github.com/afram/iceandfire-graphql
-  - type: SDK
+  - type: SDKs
     title: Haskell Library (kberger/anapioficeandfire-haskell)
     url: https://github.com/kberger/anapioficeandfire-haskell
-  - type: SDK
+  - type: SDKs
     title: Node.js Library (arbazsiddiqui/A-song-of-ice-and-fire-API)
     url: https://github.com/arbazsiddiqui/A-song-of-ice-and-fire-API
-  - type: SDK
+  - type: SDKs
     title: Node.js Library (alexwebb2/node-api-iceandfire)
     url: https://github.com/alexwebb2/node-api-iceandfire
-  - type: SDK
+  - type: SDKs
     title: R Library (MangoTheCat/GoTr)
     url: https://github.com/MangoTheCat/GoTr
-  - type: SDK
+  - type: SDKs
     title: Ruby Library (jzntam/game_of_thrones_api)
     url: https://github.com/jzntam/game_of_thrones_api
-  - type: SDK
+  - type: SDKs
     title: Rust Library (Yag000/asoiaf-rs)
     url: https://github.com/Yag000/asoiaf-rs
-  - type: SDK
+  - type: SDKs
     title: Swift Library (murphb52/IceAndFireKit)
     url: https://github.com/murphb52/IceAndFireKit
-  - type: SDK
+  - type: SDKs
     title: Swift Library (ujell/IceAndFireLoader)
     url: https://github.com/ujell/IceAndFireLoader
-  - type: SDK
+  - type: SDKs
     title: Swift Library (fitomad/WesterosKit)
     url: https://github.com/fitomad/WesterosKit
-  - type: SDK
+  - type: SDKs
     title: Go Library (anujpradhaan/anapioficeandfire-go)
     url: https://github.com/anujpradhaan/anapioficeandfire-go
-  - type: SDK
+  - type: SDKs
     title: C++ Wrapper (zytron3/AnAPIofIceAndFireCpp)
     url: https://github.com/zytron3/AnAPIofIceAndFireCpp
-  - type: SDK
+  - type: SDKs
     title: Voxgig TypeScript SDK
     url: https://github.com/voxgig-sdk/anapioficeandfire-sdk
   - type: Tools

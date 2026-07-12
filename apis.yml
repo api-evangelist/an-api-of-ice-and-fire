@@ -107,6 +107,8 @@ apis:
   - url: graphql/an-api-of-ice-and-fire-graphql.md
     type: GraphQL
 common:
+- type: DomainSecurity
+  url: security/an-api-of-ice-and-fire-domain-security.yml
 - type: Website
   url: https://anapioficeandfire.com/
 - type: Documentation

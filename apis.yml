@@ -107,6 +107,8 @@ apis:
   - url: graphql/an-api-of-ice-and-fire-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/an-api-of-ice-and-fire-agentic-access.yml
 - type: DomainSecurity
   url: security/an-api-of-ice-and-fire-domain-security.yml
 - type: Website

@@ -1,0 +1,378 @@
+openapi: 3.0.3
+info:
+  title: An API of Ice And Fire Books Characters API
+  version: '1.0'
+  description: An API of Ice And Fire is the world's greatest source for quantified and structured data from the universe of A Song of Ice and Fire (and the HBO series Game of Thrones). Three hypermedia resources — Books, Characters, and Houses — are exposed read-only over HTTPS, free of authentication, with RFC 5988 Link-header pagination, conditional caching (ETag / Last-Modified), and version selection via custom media types.
+  termsOfService: https://github.com/joakimskoog/AnApiOfIceAndFire/blob/master/LICENSE.md
+  contact:
+    name: Joakim Skoog (maintainer)
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire
+  license:
+    name: BSD 3-Clause-like
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire/blob/master/LICENSE.md
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://anapioficeandfire.com/api
+  description: Production
+tags:
+- name: Characters
+  description: Characters from the A Song of Ice and Fire universe.
+paths:
+  /characters:
+    get:
+      operationId: listCharacters
+      summary: An API of Ice And Fire List Characters
+      description: List characters from the A Song of Ice and Fire universe. Supports filtering by name, gender, culture, birth year, death year, and living status, plus RFC 5988 Link-header pagination.
+      tags:
+      - Characters
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      - name: name
+        in: query
+        description: Filter characters by name.
+        required: false
+        schema:
+          type: string
+      - name: gender
+        in: query
+        description: Filter characters by gender (e.g. Male, Female).
+        required: false
+        schema:
+          type: string
+      - name: culture
+        in: query
+        description: Filter characters by culture (e.g. Northmen, Dornish, Ironborn).
+        required: false
+        schema:
+          type: string
+      - name: born
+        in: query
+        description: Filter characters by birth year (free-text, e.g. "In 283 AC").
+        required: false
+        schema:
+          type: string
+      - name: died
+        in: query
+        description: Filter characters by death year (free-text).
+        required: false
+        schema:
+          type: string
+      - name: isAlive
+        in: query
+        description: Filter to only living (true) or only dead (false) characters.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: A paginated list of characters.
+          headers:
+            Link:
+              $ref: '#/components/headers/Link'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Character'
+              examples:
+                ListCharacters200Example:
+                  summary: Default listCharacters 200 response
+                  x-microcks-default: true
+                  value:
+                  - url: https://anapioficeandfire.com/api/characters/583
+                    name: Jon Snow
+                    gender: Male
+                    culture: Northmen
+                    born: In 283 AC
+                    died: ''
+                    titles:
+                    - Lord Commander of the Night's Watch
+                    aliases:
+                    - Lord Snow
+                    - Ned Stark's Bastard
+                    - The Bastard of Winterfell
+                    allegiances:
+                    - https://anapioficeandfire.com/api/houses/362
+                    books:
+                    - https://anapioficeandfire.com/api/books/5
+                    povBooks:
+                    - https://anapioficeandfire.com/api/books/1
+                    - https://anapioficeandfire.com/api/books/2
+                    - https://anapioficeandfire.com/api/books/3
+                    tvSeries:
+                    - Season 1
+                    - Season 2
+                    - Season 3
+                    - Season 4
+                    - Season 5
+                    - Season 6
+                    playedBy:
+                    - Kit Harington
+        '304':
+          $ref: '#/components/responses/NotModified'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/RateLimited'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /characters/{id}:
+    get:
+      operationId: getCharacter
+      summary: An API of Ice And Fire Get Character by ID
+      description: Retrieve a single character by its numeric ID. Returns the full hypermedia character resource with absolute allegiance, book, and POV-book URLs.
+      tags:
+      - Characters
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: The requested character.
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+              examples:
+                GetCharacter200Example:
+                  summary: Default getCharacter 200 response
+                  x-microcks-default: true
+                  value:
+                    url: https://anapioficeandfire.com/api/characters/583
+                    name: Jon Snow
+                    gender: Male
+                    culture: Northmen
+                    born: In 283 AC
+                    died: ''
+                    titles:
+                    - Lord Commander of the Night's Watch
+                    aliases:
+                    - Lord Snow
+                    - Ned Stark's Bastard
+                    - The Bastard of Winterfell
+                    allegiances:
+                    - https://anapioficeandfire.com/api/houses/362
+                    books:
+                    - https://anapioficeandfire.com/api/books/5
+                    povBooks:
+                    - https://anapioficeandfire.com/api/books/1
+                    - https://anapioficeandfire.com/api/books/2
+                    - https://anapioficeandfire.com/api/books/3
+                    tvSeries:
+                    - Season 1
+                    - Season 2
+                    - Season 3
+                    - Season 4
+                    - Season 5
+                    - Season 6
+                    playedBy:
+                    - Kit Harington
+        '304':
+          $ref: '#/components/responses/NotModified'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '403':
+          $ref: '#/components/responses/RateLimited'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    NotFound:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotModified:
+      description: The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.
+    BadRequest:
+      description: Malformed request — invalid query parameter or value.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    Id:
+      name: id
+      in: path
+      description: Numeric resource identifier.
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 1
+    PageSize:
+      name: pageSize
+      in: query
+      description: Items per page (default 10, max 50).
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 50
+        default: 10
+      example: 10
+    Page:
+      name: page
+      in: query
+      description: Page number (1-indexed). Defaults to 1.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        default: 1
+      example: 1
+  schemas:
+    Character:
+      type: object
+      description: A character from the A Song of Ice and Fire universe.
+      properties:
+        url:
+          type: string
+          format: uri
+          description: Hypermedia self-link for this character.
+          example: https://anapioficeandfire.com/api/characters/583
+        name:
+          type: string
+          description: Character name.
+          example: Jon Snow
+        gender:
+          type: string
+          description: Character gender.
+          example: Male
+        culture:
+          type: string
+          description: Character's culture (e.g. Northmen, Dornish, Ironborn).
+          example: Northmen
+        born:
+          type: string
+          description: Free-text description of when the character was born (e.g. "In 283 AC").
+          example: In 283 AC
+        died:
+          type: string
+          description: Free-text description of when the character died, if applicable.
+          example: ''
+        titles:
+          type: array
+          description: Titles held by the character.
+          items:
+            type: string
+          example:
+          - Lord Commander of the Night's Watch
+        aliases:
+          type: array
+          description: Aliases and nicknames.
+          items:
+            type: string
+          example:
+          - Lord Snow
+          - Ned Stark's Bastard
+          - The Bastard of Winterfell
+        father:
+          type: string
+          format: uri
+          description: URL of the character's father.
+        mother:
+          type: string
+          format: uri
+          description: URL of the character's mother.
+        spouse:
+          type: string
+          format: uri
+          description: URL of the character's spouse.
+        allegiances:
+          type: array
+          description: URLs of houses the character owes allegiance to.
+          items:
+            type: string
+            format: uri
+          example:
+          - https://anapioficeandfire.com/api/houses/362
+        books:
+          type: array
+          description: URLs of books in which the character appears.
+          items:
+            type: string
+            format: uri
+          example:
+          - https://anapioficeandfire.com/api/books/5
+        povBooks:
+          type: array
+          description: URLs of books in which the character has POV chapters.
+          items:
+            type: string
+            format: uri
+          example:
+          - https://anapioficeandfire.com/api/books/1
+          - https://anapioficeandfire.com/api/books/2
+          - https://anapioficeandfire.com/api/books/3
+        tvSeries:
+          type: array
+          description: Game of Thrones seasons in which the character appears.
+          items:
+            type: string
+          example:
+          - Season 1
+          - Season 2
+          - Season 3
+          - Season 4
+          - Season 5
+          - Season 6
+        playedBy:
+          type: array
+          description: Actor names who portrayed the character.
+          items:
+            type: string
+          example:
+          - Kit Harington
+    Error:
+      type: object
+      description: Error response envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: The requested resource could not be found.
+  headers:
+    CacheControl:
+      description: Cache-Control directives, typically including max-age.
+      schema:
+        type: string
+    Link:
+      description: RFC 5988 pagination links with `first`, `prev`, `next`, and `last` relations.
+      schema:
+        type: string
+    ETag:
+      description: Strong entity tag for conditional GETs via If-None-Match.
+      schema:
+        type: string
+    LastModified:
+      description: Last-modified timestamp for conditional GETs via If-Modified-Since.
+      schema:
+        type: string

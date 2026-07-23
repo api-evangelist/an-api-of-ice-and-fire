@@ -1,0 +1,371 @@
+openapi: 3.0.3
+info:
+  title: An API of Ice And Fire Books Houses API
+  version: '1.0'
+  description: An API of Ice And Fire is the world's greatest source for quantified and structured data from the universe of A Song of Ice and Fire (and the HBO series Game of Thrones). Three hypermedia resources — Books, Characters, and Houses — are exposed read-only over HTTPS, free of authentication, with RFC 5988 Link-header pagination, conditional caching (ETag / Last-Modified), and version selection via custom media types.
+  termsOfService: https://github.com/joakimskoog/AnApiOfIceAndFire/blob/master/LICENSE.md
+  contact:
+    name: Joakim Skoog (maintainer)
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire
+  license:
+    name: BSD 3-Clause-like
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire/blob/master/LICENSE.md
+  x-generated-from: documentation
+  x-last-validated: '2026-05-30'
+servers:
+- url: https://anapioficeandfire.com/api
+  description: Production
+tags:
+- name: Houses
+  description: Noble houses of Westeros and Essos.
+paths:
+  /houses:
+    get:
+      operationId: listHouses
+      summary: An API of Ice And Fire List Houses
+      description: List noble houses of Westeros and Essos. Supports filtering by name, region, words/motto, and various boolean has-* filters, plus RFC 5988 Link-header pagination.
+      tags:
+      - Houses
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      - name: name
+        in: query
+        description: Filter houses by exact house name.
+        required: false
+        schema:
+          type: string
+      - name: region
+        in: query
+        description: Filter houses by region (e.g. "The North", "The Reach").
+        required: false
+        schema:
+          type: string
+      - name: words
+        in: query
+        description: Filter houses by house words (motto).
+        required: false
+        schema:
+          type: string
+      - name: hasWords
+        in: query
+        description: Restrict to houses that have (true) or do not have (false) words.
+        required: false
+        schema:
+          type: boolean
+      - name: hasTitles
+        in: query
+        description: Restrict to houses that have (true) or do not have (false) titles.
+        required: false
+        schema:
+          type: boolean
+      - name: hasSeats
+        in: query
+        description: Restrict to houses that have (true) or do not have (false) seats.
+        required: false
+        schema:
+          type: boolean
+      - name: hasDiedOut
+        in: query
+        description: Restrict to extinct (true) or surviving (false) houses.
+        required: false
+        schema:
+          type: boolean
+      - name: hasAncestralWeapons
+        in: query
+        description: Restrict to houses that have (true) or do not have (false) ancestral weapons.
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: A paginated list of houses.
+          headers:
+            Link:
+              $ref: '#/components/headers/Link'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/House'
+              examples:
+                ListHouses200Example:
+                  summary: Default listHouses 200 response
+                  x-microcks-default: true
+                  value:
+                  - url: https://anapioficeandfire.com/api/houses/362
+                    name: House Stark of Winterfell
+                    region: The North
+                    coatOfArms: A running grey direwolf, on an ice-white field
+                    words: Winter is Coming
+                    titles:
+                    - King in the North
+                    - Lord of Winterfell
+                    - Warden of the North
+                    seats:
+                    - Winterfell
+                    overlord: https://anapioficeandfire.com/api/houses/16
+                    founded: Age of Heroes
+                    founder: https://anapioficeandfire.com/api/characters/209
+                    diedOut: ''
+                    ancestralWeapons:
+                    - Ice
+                    cadetBranches:
+                    - https://anapioficeandfire.com/api/houses/170
+                    - https://anapioficeandfire.com/api/houses/215
+                    swornMembers:
+                    - https://anapioficeandfire.com/api/characters/2
+                    - https://anapioficeandfire.com/api/characters/148
+                    - https://anapioficeandfire.com/api/characters/208
+        '304':
+          $ref: '#/components/responses/NotModified'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/RateLimited'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /houses/{id}:
+    get:
+      operationId: getHouse
+      summary: An API of Ice And Fire Get House by ID
+      description: Retrieve a single house by its numeric ID. Returns the full hypermedia house resource with absolute current-lord, heir, overlord, founder, cadet-branch, and sworn-member URLs.
+      tags:
+      - Houses
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: The requested house.
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/House'
+              examples:
+                GetHouse200Example:
+                  summary: Default getHouse 200 response
+                  x-microcks-default: true
+                  value:
+                    url: https://anapioficeandfire.com/api/houses/362
+                    name: House Stark of Winterfell
+                    region: The North
+                    coatOfArms: A running grey direwolf, on an ice-white field
+                    words: Winter is Coming
+                    titles:
+                    - King in the North
+                    - Lord of Winterfell
+                    - Warden of the North
+                    seats:
+                    - Winterfell
+                    overlord: https://anapioficeandfire.com/api/houses/16
+                    founded: Age of Heroes
+                    founder: https://anapioficeandfire.com/api/characters/209
+                    diedOut: ''
+                    ancestralWeapons:
+                    - Ice
+                    cadetBranches:
+                    - https://anapioficeandfire.com/api/houses/170
+                    - https://anapioficeandfire.com/api/houses/215
+                    swornMembers:
+                    - https://anapioficeandfire.com/api/characters/2
+                    - https://anapioficeandfire.com/api/characters/148
+                    - https://anapioficeandfire.com/api/characters/208
+        '304':
+          $ref: '#/components/responses/NotModified'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '403':
+          $ref: '#/components/responses/RateLimited'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    NotFound:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotModified:
+      description: The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.
+    BadRequest:
+      description: Malformed request — invalid query parameter or value.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    Id:
+      name: id
+      in: path
+      description: Numeric resource identifier.
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 1
+    PageSize:
+      name: pageSize
+      in: query
+      description: Items per page (default 10, max 50).
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 50
+        default: 10
+      example: 10
+    Page:
+      name: page
+      in: query
+      description: Page number (1-indexed). Defaults to 1.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        default: 1
+      example: 1
+  headers:
+    CacheControl:
+      description: Cache-Control directives, typically including max-age.
+      schema:
+        type: string
+    Link:
+      description: RFC 5988 pagination links with `first`, `prev`, `next`, and `last` relations.
+      schema:
+        type: string
+    ETag:
+      description: Strong entity tag for conditional GETs via If-None-Match.
+      schema:
+        type: string
+    LastModified:
+      description: Last-modified timestamp for conditional GETs via If-Modified-Since.
+      schema:
+        type: string
+  schemas:
+    House:
+      type: object
+      description: A noble house of Westeros or Essos.
+      properties:
+        url:
+          type: string
+          format: uri
+          description: Hypermedia self-link for this house.
+          example: https://anapioficeandfire.com/api/houses/362
+        name:
+          type: string
+          description: House name.
+          example: House Stark of Winterfell
+        region:
+          type: string
+          description: Geographic region.
+          example: The North
+        coatOfArms:
+          type: string
+          description: Heraldic description of the house arms.
+          example: A running grey direwolf, on an ice-white field
+        words:
+          type: string
+          description: House motto.
+          example: Winter is Coming
+        titles:
+          type: array
+          description: Titles held by the house.
+          items:
+            type: string
+          example:
+          - King in the North
+          - Lord of Winterfell
+          - Warden of the North
+        seats:
+          type: array
+          description: Castles and seats held by the house.
+          items:
+            type: string
+          example:
+          - Winterfell
+        currentLord:
+          type: string
+          format: uri
+          description: URL of the current lord (character) of the house.
+        heir:
+          type: string
+          format: uri
+          description: URL of the current heir (character) of the house.
+        overlord:
+          type: string
+          format: uri
+          description: URL of the overlord (house) above this house.
+          example: https://anapioficeandfire.com/api/houses/16
+        founded:
+          type: string
+          description: Free-text year the house was founded.
+          example: Age of Heroes
+        founder:
+          type: string
+          format: uri
+          description: URL of the character who founded the house.
+          example: https://anapioficeandfire.com/api/characters/209
+        diedOut:
+          type: string
+          description: Free-text year the house died out, if applicable.
+          example: ''
+        ancestralWeapons:
+          type: array
+          description: Names of ancestral weapons held by the house.
+          items:
+            type: string
+          example:
+          - Ice
+        cadetBranches:
+          type: array
+          description: URLs of cadet branches of this house.
+          items:
+            type: string
+            format: uri
+          example:
+          - https://anapioficeandfire.com/api/houses/170
+          - https://anapioficeandfire.com/api/houses/215
+        swornMembers:
+          type: array
+          description: URLs of characters sworn to this house.
+          items:
+            type: string
+            format: uri
+          example:
+          - https://anapioficeandfire.com/api/characters/2
+          - https://anapioficeandfire.com/api/characters/148
+          - https://anapioficeandfire.com/api/characters/208
+    Error:
+      type: object
+      description: Error response envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: The requested resource could not be found.

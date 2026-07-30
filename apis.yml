@@ -1,4 +1,16 @@
 aid: an-api-of-ice-and-fire
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/an-api-of-ice-and-fire.png
 name: An API of Ice And Fire
 description: >-
   An API of Ice And Fire is the world's greatest source for quantified and structured data from the universe of A Song
@@ -28,84 +40,222 @@ tags:
 - Open Data
 - Entertainment
 apis:
-- name: An API of Ice And Fire
-  description: >-
-    Read-only REST API exposing Books, Characters, and Houses from the A Song of Ice and Fire universe. All resources
-    are hypermedia objects with cross-resource URL references. Supports filtering, RFC 5988 Link-header pagination,
-    ETag/Last-Modified caching, and version selection via the Accept header.
+- aid: an-api-of-ice-and-fire:an-api-of-ice-and-fire-books-api
+  name: An API of Ice And Fire Books API
+  description: Books in the A Song of Ice and Fire series.
   humanURL: https://anapioficeandfire.com/
   baseURL: https://anapioficeandfire.com/api
   tags:
   - Books
-  - Characters
-  - Houses
-  - Hypermedia
-  - REST
   properties:
+  - type: OpenAPI
+    url: openapi/an-api-of-ice-and-fire-books-api-openapi.yml
   - type: Documentation
     url: https://anapioficeandfire.com/Documentation
   - type: Documentation
-    title: Wiki Reference
     url: https://github.com/joakimskoog/AnApiOfIceAndFire/wiki
   - type: SourceCode
     url: https://github.com/joakimskoog/AnApiOfIceAndFire
   - type: SignupURL
     url: https://anapioficeandfire.com/
-  - type: OpenAPI
-    url: openapi/an-api-of-ice-and-fire-openapi.yml
   - type: SDKs
-    title: Python SDK (joakimskoog/anapioficeandfire-python)
     url: https://github.com/joakimskoog/anapioficeandfire-python
   - type: SDKs
-    title: Elixir Library (sotojuan/maester)
     url: https://github.com/sotojuan/maester
   - type: SDKs
-    title: GraphQL Wrapper (afram/iceandfire-graphql)
     url: https://github.com/afram/iceandfire-graphql
   - type: SDKs
-    title: Haskell Library (kberger/anapioficeandfire-haskell)
     url: https://github.com/kberger/anapioficeandfire-haskell
   - type: SDKs
-    title: Node.js Library (arbazsiddiqui/A-song-of-ice-and-fire-API)
     url: https://github.com/arbazsiddiqui/A-song-of-ice-and-fire-API
   - type: SDKs
-    title: Node.js Library (alexwebb2/node-api-iceandfire)
     url: https://github.com/alexwebb2/node-api-iceandfire
   - type: SDKs
-    title: R Library (MangoTheCat/GoTr)
     url: https://github.com/MangoTheCat/GoTr
   - type: SDKs
-    title: Ruby Library (jzntam/game_of_thrones_api)
     url: https://github.com/jzntam/game_of_thrones_api
   - type: SDKs
-    title: Rust Library (Yag000/asoiaf-rs)
     url: https://github.com/Yag000/asoiaf-rs
   - type: SDKs
-    title: Swift Library (murphb52/IceAndFireKit)
     url: https://github.com/murphb52/IceAndFireKit
   - type: SDKs
-    title: Swift Library (ujell/IceAndFireLoader)
     url: https://github.com/ujell/IceAndFireLoader
   - type: SDKs
-    title: Swift Library (fitomad/WesterosKit)
     url: https://github.com/fitomad/WesterosKit
   - type: SDKs
-    title: Go Library (anujpradhaan/anapioficeandfire-go)
     url: https://github.com/anujpradhaan/anapioficeandfire-go
   - type: SDKs
-    title: C++ Wrapper (zytron3/AnAPIofIceAndFireCpp)
     url: https://github.com/zytron3/AnAPIofIceAndFireCpp
   - type: SDKs
-    title: Voxgig TypeScript SDK
     url: https://github.com/voxgig-sdk/anapioficeandfire-sdk
   - type: Tools
-    title: MCP Server (pipeworx-io/mcp-anapioficeandfire)
     url: https://github.com/pipeworx-io/mcp-anapioficeandfire
   - type: Tools
-    title: Tableau Web Data Connector
     url: https://github.com/stephdietzel/ConnectorOfIceAndFire
-  - url: graphql/an-api-of-ice-and-fire-graphql.md
-    type: GraphQL
+  - type: GraphQL
+    url: graphql/an-api-of-ice-and-fire-graphql.md
+- aid: an-api-of-ice-and-fire:an-api-of-ice-and-fire-characters-api
+  name: An API of Ice And Fire Characters API
+  description: Characters from the A Song of Ice and Fire universe.
+  humanURL: https://anapioficeandfire.com/
+  baseURL: https://anapioficeandfire.com/api
+  tags:
+  - Characters
+  properties:
+  - type: OpenAPI
+    url: openapi/an-api-of-ice-and-fire-characters-api-openapi.yml
+  - type: Documentation
+    url: https://anapioficeandfire.com/Documentation
+  - type: Documentation
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire/wiki
+  - type: SourceCode
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire
+  - type: SignupURL
+    url: https://anapioficeandfire.com/
+  - type: SDKs
+    url: https://github.com/joakimskoog/anapioficeandfire-python
+  - type: SDKs
+    url: https://github.com/sotojuan/maester
+  - type: SDKs
+    url: https://github.com/afram/iceandfire-graphql
+  - type: SDKs
+    url: https://github.com/kberger/anapioficeandfire-haskell
+  - type: SDKs
+    url: https://github.com/arbazsiddiqui/A-song-of-ice-and-fire-API
+  - type: SDKs
+    url: https://github.com/alexwebb2/node-api-iceandfire
+  - type: SDKs
+    url: https://github.com/MangoTheCat/GoTr
+  - type: SDKs
+    url: https://github.com/jzntam/game_of_thrones_api
+  - type: SDKs
+    url: https://github.com/Yag000/asoiaf-rs
+  - type: SDKs
+    url: https://github.com/murphb52/IceAndFireKit
+  - type: SDKs
+    url: https://github.com/ujell/IceAndFireLoader
+  - type: SDKs
+    url: https://github.com/fitomad/WesterosKit
+  - type: SDKs
+    url: https://github.com/anujpradhaan/anapioficeandfire-go
+  - type: SDKs
+    url: https://github.com/zytron3/AnAPIofIceAndFireCpp
+  - type: SDKs
+    url: https://github.com/voxgig-sdk/anapioficeandfire-sdk
+  - type: Tools
+    url: https://github.com/pipeworx-io/mcp-anapioficeandfire
+  - type: Tools
+    url: https://github.com/stephdietzel/ConnectorOfIceAndFire
+  - type: GraphQL
+    url: graphql/an-api-of-ice-and-fire-graphql.md
+- aid: an-api-of-ice-and-fire:an-api-of-ice-and-fire-houses-api
+  name: An API of Ice And Fire Houses API
+  description: Noble houses of Westeros and Essos.
+  humanURL: https://anapioficeandfire.com/
+  baseURL: https://anapioficeandfire.com/api
+  tags:
+  - Houses
+  properties:
+  - type: OpenAPI
+    url: openapi/an-api-of-ice-and-fire-houses-api-openapi.yml
+  - type: Documentation
+    url: https://anapioficeandfire.com/Documentation
+  - type: Documentation
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire/wiki
+  - type: SourceCode
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire
+  - type: SignupURL
+    url: https://anapioficeandfire.com/
+  - type: SDKs
+    url: https://github.com/joakimskoog/anapioficeandfire-python
+  - type: SDKs
+    url: https://github.com/sotojuan/maester
+  - type: SDKs
+    url: https://github.com/afram/iceandfire-graphql
+  - type: SDKs
+    url: https://github.com/kberger/anapioficeandfire-haskell
+  - type: SDKs
+    url: https://github.com/arbazsiddiqui/A-song-of-ice-and-fire-API
+  - type: SDKs
+    url: https://github.com/alexwebb2/node-api-iceandfire
+  - type: SDKs
+    url: https://github.com/MangoTheCat/GoTr
+  - type: SDKs
+    url: https://github.com/jzntam/game_of_thrones_api
+  - type: SDKs
+    url: https://github.com/Yag000/asoiaf-rs
+  - type: SDKs
+    url: https://github.com/murphb52/IceAndFireKit
+  - type: SDKs
+    url: https://github.com/ujell/IceAndFireLoader
+  - type: SDKs
+    url: https://github.com/fitomad/WesterosKit
+  - type: SDKs
+    url: https://github.com/anujpradhaan/anapioficeandfire-go
+  - type: SDKs
+    url: https://github.com/zytron3/AnAPIofIceAndFireCpp
+  - type: SDKs
+    url: https://github.com/voxgig-sdk/anapioficeandfire-sdk
+  - type: Tools
+    url: https://github.com/pipeworx-io/mcp-anapioficeandfire
+  - type: Tools
+    url: https://github.com/stephdietzel/ConnectorOfIceAndFire
+  - type: GraphQL
+    url: graphql/an-api-of-ice-and-fire-graphql.md
+- aid: an-api-of-ice-and-fire:an-api-of-ice-and-fire-root-api
+  name: An API of Ice And Fire Root API
+  description: API entry-point listing the top-level resource URLs.
+  humanURL: https://anapioficeandfire.com/
+  baseURL: https://anapioficeandfire.com/api
+  tags:
+  - Root
+  properties:
+  - type: OpenAPI
+    url: openapi/an-api-of-ice-and-fire-root-api-openapi.yml
+  - type: Documentation
+    url: https://anapioficeandfire.com/Documentation
+  - type: Documentation
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire/wiki
+  - type: SourceCode
+    url: https://github.com/joakimskoog/AnApiOfIceAndFire
+  - type: SignupURL
+    url: https://anapioficeandfire.com/
+  - type: SDKs
+    url: https://github.com/joakimskoog/anapioficeandfire-python
+  - type: SDKs
+    url: https://github.com/sotojuan/maester
+  - type: SDKs
+    url: https://github.com/afram/iceandfire-graphql
+  - type: SDKs
+    url: https://github.com/kberger/anapioficeandfire-haskell
+  - type: SDKs
+    url: https://github.com/arbazsiddiqui/A-song-of-ice-and-fire-API
+  - type: SDKs
+    url: https://github.com/alexwebb2/node-api-iceandfire
+  - type: SDKs
+    url: https://github.com/MangoTheCat/GoTr
+  - type: SDKs
+    url: https://github.com/jzntam/game_of_thrones_api
+  - type: SDKs
+    url: https://github.com/Yag000/asoiaf-rs
+  - type: SDKs
+    url: https://github.com/murphb52/IceAndFireKit
+  - type: SDKs
+    url: https://github.com/ujell/IceAndFireLoader
+  - type: SDKs
+    url: https://github.com/fitomad/WesterosKit
+  - type: SDKs
+    url: https://github.com/anujpradhaan/anapioficeandfire-go
+  - type: SDKs
+    url: https://github.com/zytron3/AnAPIofIceAndFireCpp
+  - type: SDKs
+    url: https://github.com/voxgig-sdk/anapioficeandfire-sdk
+  - type: Tools
+    url: https://github.com/pipeworx-io/mcp-anapioficeandfire
+  - type: Tools
+    url: https://github.com/stephdietzel/ConnectorOfIceAndFire
+  - type: GraphQL
+    url: graphql/an-api-of-ice-and-fire-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/an-api-of-ice-and-fire-agentic-access.yml

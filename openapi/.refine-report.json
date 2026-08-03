@@ -1,0 +1,20 @@
+{
+  "provider": "an-api-of-ice-and-fire",
+  "sources": [
+    "an-api-of-ice-and-fire-books-api-openapi.yml",
+    "an-api-of-ice-and-fire-characters-api-openapi.yml",
+    "an-api-of-ice-and-fire-houses-api-openapi.yml",
+    "an-api-of-ice-and-fire-root-api-openapi.yml"
+  ],
+  "outputs": [
+    "an-api-of-ice-and-fire-books-api-openapi.yml",
+    "an-api-of-ice-and-fire-characters-api-openapi.yml",
+    "an-api-of-ice-and-fire-houses-api-openapi.yml",
+    "an-api-of-ice-and-fire-root-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

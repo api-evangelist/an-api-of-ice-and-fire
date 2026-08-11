@@ -257,6 +257,8 @@ apis:
   - type: GraphQL
     url: graphql/an-api-of-ice-and-fire-graphql.md
 common:
+- type: IssueTracker
+  url: https://github.com/joakimskoog/AnApiOfIceAndFire/issues
 - type: AgenticAccess
   url: agentic-access/an-api-of-ice-and-fire-agentic-access.yml
 - type: DomainSecurity
@@ -284,8 +286,6 @@ common:
   url: https://github.com/public-apis/public-apis
 - type: SpectralRules
   url: rules/an-api-of-ice-and-fire-spectral-rules.yml
-- type: Vocabulary
-  url: vocabulary/an-api-of-ice-and-fire-vocabulary.yml
 features:
 - name: Hypermedia Resources
   description: >-

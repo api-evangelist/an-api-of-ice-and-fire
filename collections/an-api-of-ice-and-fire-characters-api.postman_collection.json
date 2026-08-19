@@ -1,0 +1,638 @@
+{
+  "item": [
+    {
+      "id": "34e7c203-501f-4529-8609-8c15bf8952b9",
+      "name": "Characters",
+      "description": {
+        "content": "Characters from the A Song of Ice and Fire universe.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c4b93e24-c6ea-46a1-bbf0-905293ea9fc9",
+          "name": "An API of Ice And Fire List Characters",
+          "request": {
+            "name": "An API of Ice And Fire List Characters",
+            "description": {
+              "content": "List characters from the A Song of Ice and Fire universe. Supports filtering by name, gender, culture, birth year, death year, and living status, plus RFC 5988 Link-header pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-indexed). Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "Items per page (default 10, max 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter characters by name."
+                },
+                {
+                  "disabled": false,
+                  "key": "gender",
+                  "value": "<string>",
+                  "description": "Filter characters by gender (e.g. Male, Female)."
+                },
+                {
+                  "disabled": false,
+                  "key": "culture",
+                  "value": "<string>",
+                  "description": "Filter characters by culture (e.g. Northmen, Dornish, Ironborn)."
+                },
+                {
+                  "disabled": false,
+                  "key": "born",
+                  "value": "<string>",
+                  "description": "Filter characters by birth year (free-text, e.g. \"In 283 AC\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "died",
+                  "value": "<string>",
+                  "description": "Filter characters by death year (free-text)."
+                },
+                {
+                  "disabled": false,
+                  "key": "isAlive",
+                  "value": "<boolean>",
+                  "description": "Filter to only living (true) or only dead (false) characters."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85c82a7c-3d46-45c4-9af8-a6d79be0ddee",
+              "name": "A paginated list of characters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "culture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "born",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "died",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isAlive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "RFC 5988 pagination links with `first`, `prev`, `next`, and `last` relations.",
+                  "key": "Link",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"url\": \"https://anapioficeandfire.com/api/characters/583\",\n    \"name\": \"Jon Snow\",\n    \"gender\": \"Male\",\n    \"culture\": \"Northmen\",\n    \"born\": \"In 283 AC\",\n    \"died\": \"\",\n    \"titles\": [\n      \"Lord Commander of the Night's Watch\"\n    ],\n    \"aliases\": [\n      \"Lord Snow\",\n      \"Ned Stark's Bastard\",\n      \"The Bastard of Winterfell\"\n    ],\n    \"allegiances\": [\n      \"https://anapioficeandfire.com/api/houses/362\"\n    ],\n    \"books\": [\n      \"https://anapioficeandfire.com/api/books/5\"\n    ],\n    \"povBooks\": [\n      \"https://anapioficeandfire.com/api/books/1\",\n      \"https://anapioficeandfire.com/api/books/2\",\n      \"https://anapioficeandfire.com/api/books/3\"\n    ],\n    \"tvSeries\": [\n      \"Season 1\",\n      \"Season 2\",\n      \"Season 3\",\n      \"Season 4\",\n      \"Season 5\",\n      \"Season 6\"\n    ],\n    \"playedBy\": [\n      \"Kit Harington\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e20d509d-5ad0-40e4-8a0f-86e2d076ca5b",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "culture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "born",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "died",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isAlive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09272316-f4ff-4508-b773-34e52a699ded",
+              "name": "Malformed request — invalid query parameter or value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "culture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "born",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "died",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isAlive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d671c87-4ab3-4c34-ae07-115f47bbd9e9",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "culture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "born",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "died",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isAlive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37cec976-2acf-4640-85a1-cd9ece41ca55",
+          "name": "An API of Ice And Fire Get Character by ID",
+          "request": {
+            "name": "An API of Ice And Fire Get Character by ID",
+            "description": {
+              "content": "Retrieve a single character by its numeric ID. Returns the full hypermedia character resource with absolute allegiance, book, and POV-book URLs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d10625e-6796-42e0-bf7e-6cf4a93e5ca7",
+              "name": "The requested character.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"https://anapioficeandfire.com/api/characters/583\",\n  \"name\": \"Jon Snow\",\n  \"gender\": \"Male\",\n  \"culture\": \"Northmen\",\n  \"born\": \"In 283 AC\",\n  \"died\": \"\",\n  \"titles\": [\n    \"Lord Commander of the Night's Watch\"\n  ],\n  \"aliases\": [\n    \"Lord Snow\",\n    \"Ned Stark's Bastard\",\n    \"The Bastard of Winterfell\"\n  ],\n  \"allegiances\": [\n    \"https://anapioficeandfire.com/api/houses/362\"\n  ],\n  \"books\": [\n    \"https://anapioficeandfire.com/api/books/5\"\n  ],\n  \"povBooks\": [\n    \"https://anapioficeandfire.com/api/books/1\",\n    \"https://anapioficeandfire.com/api/books/2\",\n    \"https://anapioficeandfire.com/api/books/3\"\n  ],\n  \"tvSeries\": [\n    \"Season 1\",\n    \"Season 2\",\n    \"Season 3\",\n    \"Season 4\",\n    \"Season 5\",\n    \"Season 6\"\n  ],\n  \"playedBy\": [\n    \"Kit Harington\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d46b5bd6-9c4d-4591-ab56-550c3d3979f3",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4b6513b-8ce3-48e8-82c7-0826d9d31f64",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d0febf2-81e9-4a28-bbeb-29c4d8ab8900",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://anapioficeandfire.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b54c81e1-3900-4fa9-86f7-317c7b56c977",
+    "name": "An API of Ice And Fire Books Characters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API of Ice And Fire is the world's greatest source for quantified and structured data from the universe of A Song of Ice and Fire (and the HBO series Game of Thrones). Three hypermedia resources — Books, Characters, and Houses — are exposed read-only over HTTPS, free of authentication, with RFC 5988 Link-header pagination, conditional caching (ETag / Last-Modified), and version selection via custom media types.\n\nContact Support:\n Name: Joakim Skoog (maintainer)",
+      "type": "text/plain"
+    }
+  }
+}

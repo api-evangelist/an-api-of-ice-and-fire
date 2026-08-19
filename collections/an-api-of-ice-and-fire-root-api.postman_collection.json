@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "63b2f1ff-0f4e-465d-8451-8d82895b5437",
+      "name": "Root",
+      "description": {
+        "content": "API entry-point listing the top-level resource URLs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a172224-eb35-4503-86e5-dec877e57216",
+          "name": "An API of Ice And Fire Get API Root",
+          "request": {
+            "name": "An API of Ice And Fire Get API Root",
+            "description": {
+              "content": "Returns the API entry point with absolute URLs to the three top-level collections (books, characters, houses). Useful for hypermedia discovery — clients can crawl the API from this endpoint alone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9fe59d4-a2ba-4936-bfa0-6aec99e37ed6",
+              "name": "API root document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"books\": \"https://anapioficeandfire.com/api/books\",\n  \"characters\": \"https://anapioficeandfire.com/api/characters\",\n  \"houses\": \"https://anapioficeandfire.com/api/houses\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://anapioficeandfire.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0b5686bf-ba78-4b37-8dfb-041ca4b2962e",
+    "name": "An API of Ice And Fire Books Root API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API of Ice And Fire is the world's greatest source for quantified and structured data from the universe of A Song of Ice and Fire (and the HBO series Game of Thrones). Three hypermedia resources — Books, Characters, and Houses — are exposed read-only over HTTPS, free of authentication, with RFC 5988 Link-header pagination, conditional caching (ETag / Last-Modified), and version selection via custom media types.\n\nContact Support:\n Name: Joakim Skoog (maintainer)",
+      "type": "text/plain"
+    }
+  }
+}

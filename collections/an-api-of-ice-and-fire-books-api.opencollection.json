@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "An API of Ice And Fire Books API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Books",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "An API of Ice And Fire List Books",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/books",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number (1-indexed). Defaults to 1."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Items per page (default 10, max 50)."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter books by exact book name."
+              },
+              {
+                "name": "fromReleaseDate",
+                "value": "",
+                "type": "query",
+                "description": "Only include books released on or after this date (ISO 8601)."
+              },
+              {
+                "name": "toReleaseDate",
+                "value": "",
+                "type": "query",
+                "description": "Only include books released on or before this date (ISO 8601)."
+              }
+            ]
+          },
+          "docs": "List all books in the A Song of Ice and Fire series. Supports filtering by name and release-date range, plus RFC 5988 Link-header pagination."
+        },
+        {
+          "info": {
+            "name": "An API of Ice And Fire Get Book by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/books/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "Numeric resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a single book by its numeric ID. Returns the full hypermedia book resource with absolute character and POV-character URLs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

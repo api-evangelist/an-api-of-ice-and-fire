@@ -1,0 +1,572 @@
+{
+  "item": [
+    {
+      "id": "463cb3cf-0314-4f37-85bc-7a97baf02a66",
+      "name": "Books",
+      "description": {
+        "content": "Books in the A Song of Ice and Fire series.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71d292dc-800c-4fc6-a399-93a56a2cc0e7",
+          "name": "An API of Ice And Fire List Books",
+          "request": {
+            "name": "An API of Ice And Fire List Books",
+            "description": {
+              "content": "List all books in the A Song of Ice and Fire series. Supports filtering by name and release-date range, plus RFC 5988 Link-header pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "books"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (1-indexed). Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "10",
+                  "description": "Items per page (default 10, max 50)."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter books by exact book name."
+                },
+                {
+                  "disabled": false,
+                  "key": "fromReleaseDate",
+                  "value": "<date>",
+                  "description": "Only include books released on or after this date (ISO 8601)."
+                },
+                {
+                  "disabled": false,
+                  "key": "toReleaseDate",
+                  "value": "<date>",
+                  "description": "Only include books released on or before this date (ISO 8601)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0182e953-c9fa-498b-95ad-f64fda76a820",
+              "name": "A paginated list of books.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromReleaseDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toReleaseDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "RFC 5988 pagination links with `first`, `prev`, `next`, and `last` relations.",
+                  "key": "Link",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"url\": \"https://anapioficeandfire.com/api/books/1\",\n    \"name\": \"A Game of Thrones\",\n    \"isbn\": \"978-0553103540\",\n    \"authors\": [\n      \"George R. R. Martin\"\n    ],\n    \"numberOfPages\": 694,\n    \"publisher\": \"Bantam Books\",\n    \"country\": \"United States\",\n    \"mediaType\": \"Hardcover\",\n    \"released\": \"1996-08-01T00:00:00\",\n    \"characters\": [\n      \"https://anapioficeandfire.com/api/characters/2\",\n      \"https://anapioficeandfire.com/api/characters/12\",\n      \"https://anapioficeandfire.com/api/characters/13\"\n    ],\n    \"povCharacters\": [\n      \"https://anapioficeandfire.com/api/characters/148\",\n      \"https://anapioficeandfire.com/api/characters/208\",\n      \"https://anapioficeandfire.com/api/characters/232\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "726c1d2d-8174-4512-a632-c1a9c6461a92",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromReleaseDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toReleaseDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f82a13f-19a0-49cd-a79d-f44b75f574d8",
+              "name": "Malformed request — invalid query parameter or value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromReleaseDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toReleaseDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54031f9c-8022-491a-99a1-b64f29c9e661",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromReleaseDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toReleaseDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "865cf7bb-43dd-4ace-b4c7-5ff378d9a57a",
+          "name": "An API of Ice And Fire Get Book by ID",
+          "request": {
+            "name": "An API of Ice And Fire Get Book by ID",
+            "description": {
+              "content": "Retrieve a single book by its numeric ID. Returns the full hypermedia book resource with absolute character and POV-character URLs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "books",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric resource identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6c66e23-8556-4a90-9521-75092ad8caea",
+              "name": "The requested book.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Strong entity tag for conditional GETs via If-None-Match.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Last-modified timestamp for conditional GETs via If-Modified-Since.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Cache-Control directives, typically including max-age.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"https://anapioficeandfire.com/api/books/1\",\n  \"name\": \"A Game of Thrones\",\n  \"isbn\": \"978-0553103540\",\n  \"authors\": [\n    \"George R. R. Martin\"\n  ],\n  \"numberOfPages\": 694,\n  \"publisher\": \"Bantam Books\",\n  \"country\": \"United States\",\n  \"mediaType\": \"Hardcover\",\n  \"released\": \"1996-08-01T00:00:00\",\n  \"characters\": [\n    \"https://anapioficeandfire.com/api/characters/2\",\n    \"https://anapioficeandfire.com/api/characters/12\",\n    \"https://anapioficeandfire.com/api/characters/13\"\n  ],\n  \"povCharacters\": [\n    \"https://anapioficeandfire.com/api/characters/148\",\n    \"https://anapioficeandfire.com/api/characters/208\",\n    \"https://anapioficeandfire.com/api/characters/232\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71ddc691-5440-44e0-88d8-c260124d1f4f",
+              "name": "The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb6bd81f-8624-403f-9369-7086166a5e6b",
+              "name": "The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc1071e4-2bac-4a7a-a8c1-ef2ae0d56b43",
+              "name": "The requested resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "books",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric resource identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The requested resource could not be found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://anapioficeandfire.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a03f69a9-197f-4a44-ae1c-b2587863f327",
+    "name": "An API of Ice And Fire Books API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "An API of Ice And Fire is the world's greatest source for quantified and structured data from the universe of A Song of Ice and Fire (and the HBO series Game of Thrones). Three hypermedia resources — Books, Characters, and Houses — are exposed read-only over HTTPS, free of authentication, with RFC 5988 Link-header pagination, conditional caching (ETag / Last-Modified), and version selection via custom media types.\n\nContact Support:\n Name: Joakim Skoog (maintainer)",
+      "type": "text/plain"
+    }
+  }
+}

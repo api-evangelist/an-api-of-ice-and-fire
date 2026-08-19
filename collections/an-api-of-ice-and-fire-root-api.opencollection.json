@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "An API of Ice And Fire Books Root API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Root",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "An API of Ice And Fire Get API Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/"
+          },
+          "docs": "Returns the API entry point with absolute URLs to the three top-level collections (books, characters, houses). Useful for hypermedia discovery — clients can crawl the API from this endpoint alone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

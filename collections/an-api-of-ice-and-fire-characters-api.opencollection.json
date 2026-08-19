@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "An API of Ice And Fire Books Characters API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Characters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "An API of Ice And Fire List Characters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/characters",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Page number (1-indexed). Defaults to 1."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Items per page (default 10, max 50)."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by name."
+              },
+              {
+                "name": "gender",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by gender (e.g. Male, Female)."
+              },
+              {
+                "name": "culture",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by culture (e.g. Northmen, Dornish, Ironborn)."
+              },
+              {
+                "name": "born",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by birth year (free-text, e.g. \"In 283 AC\")."
+              },
+              {
+                "name": "died",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by death year (free-text)."
+              },
+              {
+                "name": "isAlive",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only living (true) or only dead (false) characters."
+              }
+            ]
+          },
+          "docs": "List characters from the A Song of Ice and Fire universe. Supports filtering by name, gender, culture, birth year, death year, and living status, plus RFC 5988 Link-header pagination."
+        },
+        {
+          "info": {
+            "name": "An API of Ice And Fire Get Character by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://anapioficeandfire.com/api/characters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "Numeric resource identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a single character by its numeric ID. Returns the full hypermedia character resource with absolute allegiance, book, and POV-book URLs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

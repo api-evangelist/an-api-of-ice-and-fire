@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: An API of Ice And Fire Books Root API
   version: '1.0'
@@ -52,19 +52,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  headers:
-    CacheControl:
-      description: Cache-Control directives, typically including max-age.
-      schema:
-        type: string
-    ETag:
-      description: Strong entity tag for conditional GETs via If-None-Match.
-      schema:
-        type: string
-    LastModified:
-      description: Last-modified timestamp for conditional GETs via If-Modified-Since.
-      schema:
-        type: string
   schemas:
     Root:
       type: object
@@ -85,3 +72,16 @@ components:
           format: uri
           description: URL of the houses collection.
           example: https://anapioficeandfire.com/api/houses
+  headers:
+    LastModified:
+      description: Last-modified timestamp for conditional GETs via If-Modified-Since.
+      schema:
+        type: string
+    CacheControl:
+      description: Cache-Control directives, typically including max-age.
+      schema:
+        type: string
+    ETag:
+      description: Strong entity tag for conditional GETs via If-None-Match.
+      schema:
+        type: string

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: An API of Ice And Fire Books API
   version: '1.0'
@@ -155,79 +155,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    NotFound:
-      description: The requested resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotModified:
-      description: The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.
-    BadRequest:
-      description: Malformed request — invalid query parameter or value.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    Id:
-      name: id
-      in: path
-      description: Numeric resource identifier.
-      required: true
-      schema:
-        type: integer
-        format: int32
-        minimum: 1
-      example: 1
-    PageSize:
-      name: pageSize
-      in: query
-      description: Items per page (default 10, max 50).
-      required: false
-      schema:
-        type: integer
-        format: int32
-        minimum: 1
-        maximum: 50
-        default: 10
-      example: 10
-    Page:
-      name: page
-      in: query
-      description: Page number (1-indexed). Defaults to 1.
-      required: false
-      schema:
-        type: integer
-        format: int32
-        minimum: 1
-        default: 1
-      example: 1
-  headers:
-    CacheControl:
-      description: Cache-Control directives, typically including max-age.
-      schema:
-        type: string
-    Link:
-      description: RFC 5988 pagination links with `first`, `prev`, `next`, and `last` relations.
-      schema:
-        type: string
-    ETag:
-      description: Strong entity tag for conditional GETs via If-None-Match.
-      schema:
-        type: string
-    LastModified:
-      description: Last-modified timestamp for conditional GETs via If-Modified-Since.
-      schema:
-        type: string
   schemas:
+    Error:
+      type: object
+      description: Error response envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: The requested resource could not be found.
     Book:
       type: object
       description: A book in the A Song of Ice and Fire series.
@@ -294,11 +230,75 @@ components:
           - https://anapioficeandfire.com/api/characters/148
           - https://anapioficeandfire.com/api/characters/208
           - https://anapioficeandfire.com/api/characters/232
-    Error:
-      type: object
-      description: Error response envelope.
-      properties:
-        message:
-          type: string
-          description: Human-readable error message.
-          example: The requested resource could not be found.
+  responses:
+    BadRequest:
+      description: Malformed request — invalid query parameter or value.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotModified:
+      description: The resource has not changed since the version identified by the client's If-None-Match or If-Modified-Since header.
+    NotFound:
+      description: The requested resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: The caller has exceeded the per-IP daily rate limit of 20,000 requests. The window resets every 24 hours.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  headers:
+    CacheControl:
+      description: Cache-Control directives, typically including max-age.
+      schema:
+        type: string
+    ETag:
+      description: Strong entity tag for conditional GETs via If-None-Match.
+      schema:
+        type: string
+    LastModified:
+      description: Last-modified timestamp for conditional GETs via If-Modified-Since.
+      schema:
+        type: string
+    Link:
+      description: RFC 5988 pagination links with `first`, `prev`, `next`, and `last` relations.
+      schema:
+        type: string
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: Page number (1-indexed). Defaults to 1.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        default: 1
+      example: 1
+    PageSize:
+      name: pageSize
+      in: query
+      description: Items per page (default 10, max 50).
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 50
+        default: 10
+      example: 10
+    Id:
+      name: id
+      in: path
+      description: Numeric resource identifier.
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+      example: 1

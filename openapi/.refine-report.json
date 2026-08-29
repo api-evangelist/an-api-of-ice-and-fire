@@ -15,6 +15,12 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "an-api-of-ice-and-fire-books-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "an-api-of-ice-and-fire-characters-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "an-api-of-ice-and-fire-houses-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "an-api-of-ice-and-fire-root-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
